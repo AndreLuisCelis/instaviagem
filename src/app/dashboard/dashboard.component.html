@@ -1,11 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Filtrar por: </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" (click)= 'teste()'>Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <input (change)="filterForType()"  id='hotel'type="checkbox" name='filterType' value ='hotel'>
+      <a mat-list-item  ><label  for="hotel">Hotel</label></a>
+      <input (change)="filterForType()" id='attraction'type="checkbox" name='filterType' value ='attraction'>
+      <a mat-list-item ><label  for="attraction">Atração</label></a>
+      <input (change)="filterForType()" id='transport'type="checkbox" name='filterType' value ='transport'>
+      <a mat-list-item ><label  for="transport">Transporte</label></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,7 +22,7 @@
       <span class ='search'>
         <form class="example-form">
           <mat-form-field class="example-full-width" appearance="outline">
-            <input type="text" placeholder="Pesquisar" aria-label="Number" matInput [formControl]="myControl"
+            <input type="text" placeholder="Pesquisar" aria-label="Number" matInput [formControl]="searchControl"
               [matAutocomplete]="auto">
               <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">

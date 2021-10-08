@@ -1,8 +1,8 @@
 import { DashboardService } from './dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay, startWith } from 'rxjs/operators';
+import { merge, Observable } from 'rxjs';
+import { filter, map, shareReplay, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -20,44 +20,66 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private service: DashboardService) {}
+    private service: DashboardService) { }
 
 
 
-    myControl = new FormControl();
-    hotels = [];
-    searchedHotels = [];
-    filterHotels: Observable<any[]> = new Observable();
+  searchControl = new FormControl();
+  hotels = [];
+  copyHotelsForSearchAndFilter = [];
+  filterHotels: Observable<any[]> = new Observable();
 
-    ngOnInit() {
-      this.getHotels();
-      this.filterHotels = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => {
-          this.hotels = JSON.parse(JSON.stringify(this._filter(value)));
-          return this._filter(value)
-        })
-      );
-    }
+  ngOnInit() {
+    this.getHotels();
+    this.startSearch();
+  }
 
-    getHotels(){
-      this.service.getHotels().subscribe(res => {
-        this.hotels = res as [];
-        this.searchedHotels = JSON.parse(JSON.stringify(this.hotels))
+  getHotels() {
+    this.service.getHotels().subscribe(res => {
+      console.log(res);
+      this.hotels = res as [];
+      this.copyHotelsForSearchAndFilter = JSON.parse(JSON.stringify(this.hotels));
+    })
+  }
+
+  startSearch() {
+    // Faz uma subscrição para pegar o valor do input de pesquisa e retornar o resultado
+    merge(this.searchControl.valueChanges).pipe(
+      startWith(''),
+      map(value => {
+        this.hotels = this.search(value) as [];
+        return this.hotels
       })
-    }
+    ).subscribe();
+  }
 
-    private _filter(value: string): any[] {
-      const filterValue = value.toLowerCase();
-      return this.searchedHotels.filter((option:any) => option?.name.toLowerCase().includes(filterValue));
-    }
+  private search(value: string): any[] {
+    const filterValue = value.toLowerCase();
+    return this.copyHotelsForSearchAndFilter.filter((option: any) => option?.name.toLowerCase().includes(filterValue));
+  }
 
-    private _filter2(value: string): any[] {
-      const filterValue = value.toLowerCase();
-      return this.searchedHotels.filter((option:any) => option?.type.toLowerCase().includes(filterValue));
+  filterForType() {
+    let filterValue = this.getValuesSelectedOnFilter();
+    let hotelsFiltered: any[] = [];
+    if(!filterValue.length){
+      this.hotels= this.copyHotelsForSearchAndFilter;
+      return;
     }
+    filterValue.forEach(element => {
+      let copy = JSON.parse(JSON.stringify(this.copyHotelsForSearchAndFilter));
+      let filtered = copy.filter((option: any) => option?.type.toLowerCase().includes(element));
+      hotelsFiltered = [...hotelsFiltered, ...filtered];
+    });
+    this.hotels = hotelsFiltered as [];
+  }
 
-    teste(){
-      this.myControl.setValue('abc');
-    }
+
+
+  getValuesSelectedOnFilter() {
+    let filterTypeNode = document.getElementsByName('filterType');
+    let arrayFilters = Array.prototype.slice.call(filterTypeNode);
+    return arrayFilters.filter(selecionado => selecionado.checked == true)
+      .map(selecionado => selecionado.value);
+  }
+
 }
