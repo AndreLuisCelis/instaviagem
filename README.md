@@ -2,7 +2,7 @@
 
 
 ## Deploy da Aplicação :dash:
-> Link do deploy da aplicação: https://andre-dsvendas-sds3.netlify.app
+> Link do deploy da aplicação: https://instaviagem.netlify.app/
 
 
 
