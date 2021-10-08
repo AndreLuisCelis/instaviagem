@@ -1,0 +1,28 @@
+<div class="modal-details">
+  <div class="modal-details-header">
+    <h1>{{data.name}}</h1>
+    <h2><mat-icon> business</mat-icon>  {{data.address}}</h2>
+    <div class="actions">
+      <div class="actions-call">
+        <mat-icon> call</mat-icon><a  href= "tel:{{data.phone}}">{{data.phone}}</a>
+      </div>
+      <div class="actions-call">
+        <mat-icon> email</mat-icon><a  href= "email:{{data.email}}">{{data.email}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-details-body">
+    <img src="{{data.image}}" alt="">
+    <p>{{data.about}}</p>
+  </div>
+
+  <hr>
+  <div class="modal-details-footer">
+    <input type="checkbox" name="favorite" id="favorite">
+    <label for="favorite"  >
+      <mat-icon class='liked' *ngIf="liked" (click) = setLiked() >favorite</mat-icon>
+      <mat-icon  *ngIf="!liked" (click) = setLiked() >favorite_border</mat-icon>
+    </label>
+  </div>
+</div>

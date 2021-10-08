@@ -1,10 +1,10 @@
-<mat-card class="example-card">
+<mat-card class="card" (click)="openModalDetails()" >
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar class="header-image"></div>
     <mat-card-title>{{data?.name}}</mat-card-title>
     <mat-card-subtitle>{{data?.address}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{data?.image}}" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{data?.image}}" alt="Photo of a hotel">
   <mat-card-content>
     <p>
      {{data.about}}
@@ -12,6 +12,6 @@
   </mat-card-content>
   <mat-card-actions>
     <div class='price'>Preço :  {{data?.price | currency : 'R$' }}</div>
-
+    <mat-icon class='liked' *ngIf="liked" >favorite</mat-icon>
   </mat-card-actions>
 </mat-card>

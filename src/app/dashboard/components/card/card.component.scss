@@ -1,9 +1,12 @@
-.example-card {
+.card {
   max-width: 400px;
   margin: 10px;
+  cursor: pointer;
+  &:hover{
+    margin-top: -0.5px;
+  }
 }
-
-.example-header-image {
+.header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
@@ -16,4 +19,9 @@
   filter: brightness(90%);
   background-color: #555;
   border-radius: 10px;
+}
+
+.liked{
+  margin-left: 20px;
+  color: palevioletred;
 }

@@ -22,6 +22,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalDetailsComponent } from './dashboard/components/modal-details/modal-details.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     DashboardComponent,
     CardComponent,
+    ModalDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule
   ],
 
 

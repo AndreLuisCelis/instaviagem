@@ -1,0 +1,61 @@
+.modal-details {
+  max-width: 900px;
+  &-header {
+    .actions {
+      display: flex;
+
+      &-call {
+        margin-left: 10px;
+        color: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 10px;
+        background-color: #555;
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        a {
+          margin-left: 10px;
+          cursor: pointer;
+          color: white;
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+
+  &-body {
+    text-align: center;
+
+    img {
+      max-height: 40vh;
+    }
+
+    p {
+      margin-top: 20px;
+      text-align: left;
+    }
+  }
+
+  &-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+    padding-right: 50px;
+    input {
+      display: none;
+    }
+
+    label {
+      mat-icon {
+        cursor: pointer;
+        font-size: 3rem;
+        &.liked{
+          color: palevioletred;
+        }
+      }
+    }
+  }
+}
