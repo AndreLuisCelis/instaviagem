@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{data?.name}}</mat-card-title>
+    <mat-card-subtitle>{{data?.address}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{data?.image}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+     {{data.about}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class='price'>Preço :  {{data?.price | currency : 'R$' }}</div>
+
+  </mat-card-actions>
+</mat-card>
