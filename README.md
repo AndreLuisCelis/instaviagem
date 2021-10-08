@@ -6,7 +6,7 @@
 
 
 
-## Tecnolgias
+## Tecnologias
 
 
 - __Angular 12__ 
