@@ -12,15 +12,12 @@ export class ModalDetailsComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
 
-    liked = this.data.liked;
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
   setLiked(){
-    this.liked =!this.liked;
-    this.data.liked = this.liked;
+    this.data.liked = !this.data.liked;
   }
 
 }

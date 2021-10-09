@@ -12,6 +12,6 @@
   </mat-card-content>
   <mat-card-actions>
     <div class='price'>Preço :  {{data?.price | currency : 'R$' }}</div>
-    <mat-icon class='liked' *ngIf="liked" >favorite</mat-icon>
+    <mat-icon class='liked' *ngIf="data.liked" >favorite</mat-icon>
   </mat-card-actions>
 </mat-card>

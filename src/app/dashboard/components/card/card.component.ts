@@ -13,20 +13,16 @@ export class CardComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   @Input() data:any;
-  liked = false;
+
 
   ngOnInit(): void {
   }
 
   openModalDetails(): void {
-    this.data.liked = this.liked;
     const dialogRef = this.dialog.open(ModalDetailsComponent, {
       data: this.data
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      this.liked = this.data.liked;
-
     });
   }
 

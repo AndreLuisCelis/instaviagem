@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
 
   searchControl = new FormControl();
-  hotels = [];
+  hotels: any[] = [];
   copyHotelsForSearchAndFilter = [];
   filterHotels: Observable<any[]> = new Observable();
 
@@ -36,10 +36,21 @@ export class DashboardComponent implements OnInit {
 
   getHotels() {
     this.service.getHotels().subscribe(res => {
-      console.log(res);
       this.hotels = res as [];
-      this.copyHotelsForSearchAndFilter = JSON.parse(JSON.stringify(this.hotels));
+      this.addLikedInHotels();
+      this.createCopyHotelsForSearchAndFilter();
     })
+  }
+
+  addLikedInHotels(){
+    this.hotels.forEach((hotel:any) => {
+      hotel.liked = false;
+      return hotel;
+    });
+  }
+
+  createCopyHotelsForSearchAndFilter(){
+    this.copyHotelsForSearchAndFilter = JSON.parse(JSON.stringify(this.hotels));
   }
 
   startSearch() {
