@@ -78,7 +78,8 @@ export class DashboardComponent implements OnInit {
     }
     filterValue.forEach(element => {
       let copy = JSON.parse(JSON.stringify(this.copyHotelsForSearchAndFilter));
-      let filtered = copy.filter((option: any) => option?.type.toLowerCase().includes(element));
+      let filtered = this.copyHotelsForSearchAndFilter.filter((option: any) => option?.type.toLowerCase().includes(element));
+      console.log(filtered)
       hotelsFiltered = [...hotelsFiltered, ...filtered];
     });
     this.hotels = hotelsFiltered as [];
