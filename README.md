@@ -2,15 +2,15 @@
 
 
 ## Deploy da Aplicação :dash:
-> Link do deploy da aplicação: https://andre-dsvendas-sds3.netlify.app
+> Link do deploy da aplicação: https://instaviagem.netlify.app/
 
 
 
-## Tecnolgias
+## Tecnologias
 
 
-- __Angular 11__ 
-- __Angular Material__  
+- __Angular 12__ 
+- __Angular Material 12__  
 - __Scss__  
 - __HTML__ 
 - __Typesript__ 
@@ -18,13 +18,13 @@
 
 
 ----------------------------------------
-### Tela inicial com roteamento para tela de relatórios
-![imagem do projeto](/assets/img1.png)
+
+![imagem do projeto](/src/assets/img1.png)
 ---------------------------------------------
-### Tela de relatórios com graficos consumindo API Rest desenvolvida com Spring
+
 ![imagem do projeto](/src/assets/img2.png)
 ----------------------------------------------------
-### Tabela dinamica com paginação no front end e backend 
+
 ![imagem do projeto](/src/assets/img3.png)
 
 
