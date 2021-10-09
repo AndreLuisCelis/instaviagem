@@ -17,7 +17,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class='logo'>Instaviagem</span>
+
+      <div class="header-dash">
+        <span class='logo'>Instaviagem</span>
 
       <span class ='search'>
         <form class="example-form">
@@ -33,6 +35,9 @@
           </mat-form-field>
         </form>
       </span>
+
+      </div>
+
     </mat-toolbar>
     <div class="container">
       <app-card [data]='item' *ngFor="let item of hotels "></app-card>
