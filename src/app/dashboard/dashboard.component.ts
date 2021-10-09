@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
   searchControl = new FormControl();
   hotels: any[] = [];
   copyHotelsForSearchAndFilter = [];
-  filterHotels: Observable<any[]> = new Observable();
 
   ngOnInit() {
     this.getHotels();

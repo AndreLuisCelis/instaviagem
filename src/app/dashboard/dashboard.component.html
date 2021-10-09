@@ -28,8 +28,8 @@
               [matAutocomplete]="auto">
               <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filterHotels | async" [value]="option.name">
-                {{option?.name}}
+              <mat-option *ngFor="let option of hotels " [value]="option.name">
+                {{option.name}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
