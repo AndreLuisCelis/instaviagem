@@ -69,12 +69,13 @@ export class DashboardComponent implements OnInit {
   }
 
   filterForType() {
-    let filterValue = this.getValuesSelectedOnFilter();
-    let hotelsFiltered: any[] = [];
-    if(!filterValue.length){
+    if(this.notHasFilterActived()){
       this.hotels= this.copyHotelsForSearchAndFilter;
       return;
     }
+
+    let filterValue = this.getValuesSelectedOnFilter();
+    let hotelsFiltered: any[] = [];
     filterValue.forEach(element => {
       let filtered = this.copyHotelsForSearchAndFilter.filter((option: any) => option?.type.toLowerCase().includes(element));
       hotelsFiltered = [...hotelsFiltered, ...filtered];
@@ -82,13 +83,19 @@ export class DashboardComponent implements OnInit {
     this.hotels = hotelsFiltered as [];
   }
 
-
-
-  getValuesSelectedOnFilter() {
-    let filterTypeNode = document.getElementsByName('filterType');
-    let arrayFilters = Array.prototype.slice.call(filterTypeNode);
+  getValuesSelectedOnFilter():any[] {
+    let arrayFilters = this.getArrayByElementName('filterType');
     return arrayFilters.filter(selecionado => selecionado.checked == true)
       .map(selecionado => selecionado.value);
+  }
+
+  getArrayByElementName (elementName: string):any[]{
+    let filterTypeNode = document.getElementsByName(elementName);
+    return Array.prototype.slice.call(filterTypeNode);
+  }
+
+  notHasFilterActived():boolean {
+    return !this.getValuesSelectedOnFilter().length;
   }
 
 }
