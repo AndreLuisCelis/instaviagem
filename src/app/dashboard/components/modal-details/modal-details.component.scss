@@ -57,6 +57,9 @@
       mat-icon {
         cursor: pointer;
         font-size: 3rem;
+        &:hover{
+          color:palevioletred;
+        }
 
         &.liked {
           color: palevioletred;
