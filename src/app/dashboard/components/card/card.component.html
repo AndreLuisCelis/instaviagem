@@ -7,11 +7,11 @@
   <img mat-card-image src="{{data?.image}}" alt="Photo of a hotel">
   <mat-card-content>
     <p>
-     {{data.about}}
+     {{data?.about}}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <div class='price'>Preço :  {{data?.price | currency : 'BRL':'symbol':'1.2-2': 'pt-BR' }}</div>
-    <mat-icon class='liked' *ngIf="data.liked" >favorite</mat-icon>
+    <mat-icon class='liked' *ngIf="data?.liked" >favorite</mat-icon>
   </mat-card-actions>
 </mat-card>
