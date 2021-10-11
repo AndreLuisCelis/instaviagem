@@ -3,11 +3,11 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Filtrar por: </mat-toolbar>
     <mat-nav-list>
-      <input (change)="filterForType()"  id='hotel'type="checkbox" name='filterType' value ='hotel'>
+      <input #filterType (change)="filterForType()"  id='hotel'type="checkbox" name='filterType' value ='hotel'>
       <a mat-list-item  ><label  for="hotel">Hotel</label></a>
-      <input (change)="filterForType()" id='attraction'type="checkbox" name='filterType' value ='attraction'>
+      <input #filterType (change)="filterForType()" id='attraction'type="checkbox" name='filterType' value ='attraction'>
       <a mat-list-item ><label  for="attraction">Atração</label></a>
-      <input (change)="filterForType()" id='transport'type="checkbox" name='filterType' value ='transport'>
+      <input #filterType (change)="filterForType()" id='transport'type="checkbox" name='filterType' value ='transport'>
       <a mat-list-item ><label  for="transport">Transporte</label></a>
     </mat-nav-list>
   </mat-sidenav>

@@ -1,8 +1,8 @@
 import { DashboardService } from './dashboard.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { merge, Observable } from 'rxjs';
-import { filter, map, shareReplay, startWith } from 'rxjs/operators';
+import { map, shareReplay, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     private service: DashboardService) { }
 
 
-
+  @ViewChildren('filterType')filters:QueryList<ElementRef> = new QueryList();
   searchControl = new FormControl();
   hotels: any[] = [];
   copyHotelsForSearchAndFilter = [];
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
       this.hotels = res as [];
       this.addLikedInHotels();
       this.createCopyHotelsForSearchAndFilter();
-    })
+    });
   }
 
   addLikedInHotels(){
@@ -74,7 +74,8 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    let filterValue = this.getValuesSelectedOnFilter();
+    // let filterValue = this.getValuesSelectedOnFilter();
+    let filterValue = this.getFiltersSelected();
     let hotelsFiltered: any[] = [];
     filterValue.forEach(element => {
       let filtered = this.copyHotelsForSearchAndFilter.filter((option: any) => option?.type.toLowerCase().includes(element));
@@ -89,9 +90,19 @@ export class DashboardComponent implements OnInit {
       .map(selecionado => selecionado.value);
   }
 
+  /// METODO UTILIZANDO JAVASCRIPT PARA PEGAR OS ELEMENTOS
   getArrayByElementName (elementName: string):any[]{
-    let filterTypeNode = document.getElementsByName(elementName);
-    return Array.prototype.slice.call(filterTypeNode);
+    let elements = document.getElementsByName(elementName);
+    return Array.prototype.slice.call(elements);
+  }
+
+
+  //  METODO UTILIZANDO VIEWCHILDREN PARA PEGAR OS FILTROS SELECIONADOS
+  getFiltersSelected():any[]{
+    return this.filters.toArray()
+    .map((element)=> element.nativeElement)
+    .filter(nativeElement => nativeElement.checked)
+    .map(filterName=> filterName.value);
   }
 
   notHasFilterActived():boolean {

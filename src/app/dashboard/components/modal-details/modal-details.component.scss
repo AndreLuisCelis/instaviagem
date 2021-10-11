@@ -1,8 +1,12 @@
 .modal-details {
   max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+
   &-header {
     .actions {
       display: flex;
+      flex-wrap: wrap;
 
       &-call {
         margin-left: 10px;
@@ -44,6 +48,7 @@
     display: flex;
     justify-content: right;
     padding-right: 50px;
+
     input {
       display: none;
     }
@@ -52,7 +57,8 @@
       mat-icon {
         cursor: pointer;
         font-size: 3rem;
-        &.liked{
+
+        &.liked {
           color: palevioletred;
         }
       }
