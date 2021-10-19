@@ -40,11 +40,29 @@
     margin: 0 auto;
     margin-top: 20px;
 
-    mat-form-field {
+    ::ng-deep mat-form-field {
+      margin-top: 20px;
+      color: white;
       width: 100%;
+      .mat-form-field-prefix{
+        margin-right: 10px;
+      }
+      .mat-form-field-flex {
+        background-color: violet;
+        padding-left: 20px;
+        border-radius: 25px;
+      }
+      .mat-form-field-underline{
+        display: none;
+      }
+
+      .mat-form-field-infix{
+        border-top: 0px solid transparent;
+      }
     }
   }
 }
+
 
 .container {
   padding-top: 20px;

@@ -23,10 +23,10 @@
 
       <span class ='search'>
         <form class="example-form">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <input type="text" placeholder="Pesquisar" aria-label="Number" matInput [formControl]="searchControl"
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <input type="text" placeholder="Pesquisar" matInput [formControl]="searchControl"
               [matAutocomplete]="auto">
-              <mat-icon matSuffix>search</mat-icon>
+              <mat-icon matPrefix>search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of hotels " [value]="option.name">
                 {{option.name}}

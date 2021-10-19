@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     private service: DashboardService) { }
 
 
-  @ViewChildren('filterType')filters:QueryList<ElementRef> = new QueryList();
+  @ViewChildren('filterType') filters:QueryList<ElementRef> = new QueryList();
   searchControl = new FormControl();
   hotels: any[] = [];
   copyHotelsForSearchAndFilter = [];
@@ -33,15 +33,18 @@ export class DashboardComponent implements OnInit {
     this.startSearch();
   }
 
-  getHotels() {
-    this.service.getHotels().subscribe(res => {
-      this.hotels = res as [];
-      this.addLikedInHotels();
-      this.createCopyHotelsForSearchAndFilter();
-    });
+ async getHotels() {
+    // this.service.getHotels().subscribe(res => {
+    //   this.hotels = res as [];
+    //   this.addLikedInHotels();
+    //   this.createCopyHotelsForSearchAndFilter();
+    // });
+    this.hotels = await this.service.getHotels().toPromise();
+    this.addAtributLikedInHotels();
+    this.createCopyHotelsForSearchAndFilter();
   }
 
-  addLikedInHotels(){
+  addAtributLikedInHotels(){
     this.hotels.forEach((hotel:any) => {
       hotel.liked = false;
       return hotel;
@@ -100,9 +103,9 @@ export class DashboardComponent implements OnInit {
   //  METODO UTILIZANDO VIEWCHILDREN PARA PEGAR OS FILTROS SELECIONADOS
   getFiltersSelected():any[]{
     return this.filters.toArray()
-    .map((element)=> element.nativeElement)
-    .filter(nativeElement => nativeElement.checked)
-    .map(filterName=> filterName.value);
+    .map((filterElement)=> filterElement.nativeElement)
+    .filter(filterChecked => filterChecked.checked)
+    .map(filterCheckedName=> filterCheckedName.value);
   }
 
   notHasFilterActived():boolean {

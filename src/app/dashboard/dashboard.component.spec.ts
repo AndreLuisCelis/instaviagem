@@ -31,12 +31,19 @@ describe('DashboardComponent', () => {
       ]
     }).compileComponents();
   }));
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
+    component.getHotels();
     fixture.detectChanges();
-  });
+  }));
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  it('teste getHotels()', waitForAsync(() => {
+      component.getHotels().then(function call(){
+        expect(component.hotels.length).toBeTruthy();
+      });
+  }));
 });
