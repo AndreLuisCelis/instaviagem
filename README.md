@@ -1,5 +1,8 @@
 # Instaviagem
 
+Aplicação web desenvolvida com Angular 12 , utiliza uma api externa para obter os dados , API as vezes não esta disponivel .
+
+Na aplicação é possivel fazer filtragem do resultado por categorias , e também é possivel fazer pesquisa por palavra chave com autocomplete implementado com base nos dados vindos do backend , também é possivel dar like e deslike nos resultados , alem de abrir um modal com maiores detalhes sobre as postagens .
 
 ## Deploy da Aplicação :dash:
 > Link do deploy da aplicação: https://instaviagem.netlify.app/
